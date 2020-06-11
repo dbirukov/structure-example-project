@@ -1,4 +1,4 @@
-package com.tenengroup.example
+package com.tenengroup.example.misc
 
 trait Transformation[TS, TD, TLModel, TTModel]
   extends PureTransformation [TLModel, TTModel] {

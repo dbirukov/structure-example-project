@@ -1,6 +1,6 @@
 package com.tenengroup.example.job
 
-import com.tenengroup.example.Transformation
+import com.tenengroup.example.misc.Transformation
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
 class UniqueNamesQuery(spark: SparkSession)
