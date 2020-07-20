@@ -19,6 +19,6 @@ trait SparkSessionTestWrapper {
 
   def assertField(fieldName: String, fieldType: DataType, schema: StructType): Unit = {
     val fieldOpt = schema.fields.find(f => f.name == fieldName && f.dataType == fieldType)
-    assert(fieldOpt.nonEmpty)
+    assert(fieldOpt.nonEmpty, s"$fieldOpt field was not found in $schema")
   }
 }
