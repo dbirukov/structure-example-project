@@ -23,10 +23,34 @@ object UniqueNamesJob extends App {
     spark
   }
 
+  import scopt.OptionParser
+  val parser = new OptionParser[Config]("UniqueNamesJob") {
+    head("this is example app")
+    opt[String]("dogsPath")
+      .required()
+      .valueName("<path>")
+      .action((value, config) => config.copy(dogsPath = value))
+      .text("dogsPath is required")
+    opt[String]("catsPath")
+      .required()
+      .valueName("<path>")
+      .action((value, config) => config.copy(catsPath = value))
+      .text("catsPath is required")
+    opt[String]("dest")
+      .required()
+      .valueName("<path>")
+      .action((value, config) => config.copy(dest = value))
+      .text("dest is required")
+  }
 
-  val sparkSession = initSpark(Some("UniqueNamesJob"))
-  val job = new UniqueNamesQuery(sparkSession)
-  job.main(args)
+  parser.parse(args, Config()) match {
+    case Some(x) => println(x)
+      val sparkSession = initSpark(Some("UniqueNamesJob"))
+      val job = new UniqueNamesQuery(sparkSession)
+      job.main(args)
 
-  sparkSession.close()
+      sparkSession.close()
+    case None =>
+  }
+
 }

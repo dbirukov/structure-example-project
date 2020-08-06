@@ -7,6 +7,7 @@ scalaVersion := "2.11.12"
 
 libraryDependencies += "org.apache.spark" %% "spark-core" % sparkVersion % "provided"
 libraryDependencies += "org.apache.spark" %% "spark-sql" % sparkVersion % "provided"
+libraryDependencies += "com.github.scopt" %% "scopt" % "3.7.1"
 
 libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % "test"
 
